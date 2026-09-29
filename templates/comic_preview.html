@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comic Preview - ComicCraft</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        .content {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+
+        .outline {
+            background: #fff7e6;
+        }
+
+        .narration {
+            background: #eaf7ff;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📖 Comic Preview</h1>
+
+        <div class="section">
+            <h2>📝 Your Story</h2>
+
+            <div class="content">
+                {{ story }}
+            </div>
+        </div>
+        <div class="section">
+    <h2>🎬 Comic Details</h2>
+
+    <div class="content">
+        <strong>👤 Main Character:</strong> {{ character }}<br><br>
+
+        <strong>📍 Setting:</strong> {{ setting }}<br><br>
+
+        <strong>🎭 Story Tone:</strong> {{ tone }}<br><br>
+
+        <strong>🎨 Art Style:</strong> {{ art_style }}
+    </div>
+</div>
+
+
+        <div class="section">
+            <h2>🤖 AI Comic Outline</h2>
+
+            <div class="content outline">
+                {{ outline.outline }}
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💬 AI Narration & Dialogue</h2>
+
+            <div class="content narration">
+                {{ narration.narration }}
+            </div>
+        </div>
+        {% if comic_layout %}
+<div class="section">
+    <h2>🎨 Generated Comic</h2>
+
+    <div style="text-align: center;">
+    <img
+        src="/{{ comic_layout }}"
+        alt="Generated Comic"
+        style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);"
+    >
+</div>
+</div>
+{% endif %}
+{% if pdf_path %}
+<a href="/{{ pdf_path }}" download>
+    📥 Download Comic as PDF
+</a>
+{% endif %}
+
+<br><br>
+
+        <a href="/">
+            ← Create Another Comic
+        </a>
+
+    </div>
+
+</body>
+
+</html>
