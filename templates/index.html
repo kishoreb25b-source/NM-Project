@@ -9,98 +9,242 @@
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #f6f0ff, #eef7ff);
+            font-family: "Segoe UI", Arial, sans-serif;
             min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, #eadcff, transparent 35%),
+                radial-gradient(circle at bottom right, #dff1ff, transparent 35%),
+                linear-gradient(135deg, #f8f5ff, #eef7ff);
+
+            padding: 40px 20px;
+            color: #24213a;
         }
 
         .container {
             max-width: 850px;
             margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 28px;
+            padding: 42px;
+            box-shadow: 0 20px 60px rgba(91, 72, 150, 0.15);
         }
+
+        /* HEADER */
 
         .header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 38px;
+        }
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border-radius: 20px;
+
+            font-size: 36px;
+
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.25);
         }
 
         .header h1 {
-            font-size: 38px;
+            font-size: 40px;
+            font-weight: 800;
             margin-bottom: 10px;
+
+            background: linear-gradient(90deg, #7c3aed, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .header p {
-            color: #666;
-            font-size: 17px;
+            color: #77738a;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
+        .tag {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 7px 14px;
+
+            background: #f3edff;
+            color: #7c3aed;
+
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* FORM */
+
         .section {
-            margin-top: 22px;
+            margin-top: 24px;
         }
 
         label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            margin-bottom: 9px;
+            color: #302b45;
         }
 
         textarea,
         input,
         select {
             width: 100%;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+
+            padding: 15px 16px;
+
+            border: 1.5px solid #e1ddec;
+            border-radius: 14px;
+
+            background: #fbfaff;
+
             font-size: 15px;
-            font-family: Arial, sans-serif;
+            font-family: inherit;
+
+            color: #29253b;
+
+            transition: all 0.25s ease;
         }
 
         textarea {
-            height: 180px;
+            min-height: 170px;
             resize: vertical;
+            line-height: 1.6;
+        }
+
+        textarea::placeholder,
+        input::placeholder {
+            color: #aaa6b8;
         }
 
         textarea:focus,
         input:focus,
         select:focus {
             outline: none;
-            border-color: #7b61ff;
+
+            border-color: #8b5cf6;
+
+            background: white;
+
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.10);
         }
+
+        /* TWO COLUMN */
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        /* BUTTON */
 
         .button-container {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 34px;
         }
 
         button {
-            padding: 14px 35px;
             border: none;
-            border-radius: 10px;
-            background: #7b61ff;
+
+            padding: 15px 35px;
+
+            border-radius: 14px;
+
+            background: linear-gradient(135deg, #7c3aed, #db2777);
+
             color: white;
+
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 700;
+
             cursor: pointer;
+
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+
+            transition: all 0.25s ease;
         }
 
         button:hover {
-            background: #6247e8;
+            transform: translateY(-2px);
+
+            box-shadow: 0 14px 30px rgba(124, 58, 237, 0.32);
         }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #loadingMessage {
+            margin-top: 18px;
+            color: #77738a;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
 
         .footer {
             text-align: center;
-            margin-top: 30px;
-            color: #888;
+
+            margin-top: 35px;
+            padding-top: 22px;
+
+            border-top: 1px solid #eeeaf5;
+
+            color: #9691a5;
             font-size: 13px;
+        }
+
+        .footer strong {
+            color: #7c3aed;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 28px 20px;
+                border-radius: 22px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -109,18 +253,36 @@
 
 <div class="container">
 
+    <!-- HEADER -->
+
     <div class="header">
-        <h1>🎨 ComicCraft</h1>
+
+        <div class="logo">
+            🎨
+        </div>
+
+        <h1>ComicCraft</h1>
 
         <p>
-            Create your own AI-powered comic story
-            with Gemini and generative AI.
+            Turn your imagination into an AI-powered comic story
+            using Gemini and Generative AI.
         </p>
+
+        <div class="tag">
+            ✨ Create • Imagine • Generate
+        </div>
+
     </div>
+
+
+    <!-- FORM -->
 
     <form action="/generate" method="post" onsubmit="showLoading()">
 
+        <!-- STORY -->
+
         <div class="section">
+
             <label for="story">
                 📝 Enter Your Story
             </label>
@@ -128,132 +290,178 @@
             <textarea
                 id="story"
                 name="story"
-                placeholder="Write your story here..."
+                placeholder="Tell us your story idea..."
                 required
             ></textarea>
+
         </div>
 
 
-        <div class="section">
-            <label for="character">
-                👤 Main Character Name
-            </label>
+        <!-- CHARACTER + SETTING -->
 
-            <input
-                type="text"
-                id="character"
-                name="character"
-                placeholder="Example: Maya"
-                required
-            >
+        <div class="row">
+
+            <div class="section">
+
+                <label for="character">
+                    👤 Main Character
+                </label>
+
+                <input
+                    type="text"
+                    id="character"
+                    name="character"
+                    placeholder="Example: Maya"
+                    required
+                >
+
+            </div>
+
+
+            <div class="section">
+
+                <label for="setting">
+                    📍 Story Setting
+                </label>
+
+                <input
+                    type="text"
+                    id="setting"
+                    name="setting"
+                    placeholder="Example: Magical Library"
+                    required
+                >
+
+            </div>
+
         </div>
 
 
-        <div class="section">
-            <label for="setting">
-                📍 Setting
-            </label>
+        <!-- TONE + ART STYLE -->
 
-            <input
-                type="text"
-                id="setting"
-                name="setting"
-                placeholder="Example: Magical Library"
-                required
-            >
+        <div class="row">
+
+            <div class="section">
+
+                <label for="tone">
+                    🎭 Story Tone
+                </label>
+
+                <select id="tone" name="tone">
+
+                    <option value="Adventure">
+                        Adventure
+                    </option>
+
+                    <option value="Funny">
+                        Funny
+                    </option>
+
+                    <option value="Fantasy">
+                        Fantasy
+                    </option>
+
+                    <option value="Mystery">
+                        Mystery
+                    </option>
+
+                    <option value="Emotional">
+                        Emotional
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="section">
+
+                <label for="art_style">
+                    🎨 Art Style
+                </label>
+
+                <select id="art_style" name="art_style">
+
+                    <option value="Digital Comic Art">
+                        Digital Comic Art
+                    </option>
+
+                    <option value="Anime">
+                        Anime
+                    </option>
+
+                    <option value="Cartoon">
+                        Cartoon
+                    </option>
+
+                    <option value="Manga">
+                        Manga
+                    </option>
+
+                    <option value="Watercolor">
+                        Watercolor
+                    </option>
+
+                </select>
+
+            </div>
+
         </div>
 
 
-        <div class="section">
-            <label for="tone">
-                🎭 Story Tone
-            </label>
-
-            <select id="tone" name="tone">
-
-                <option value="Adventure">
-                    Adventure
-                </option>
-
-                <option value="Funny">
-                    Funny
-                </option>
-
-                <option value="Fantasy">
-                    Fantasy
-                </option>
-
-                <option value="Mystery">
-                    Mystery
-                </option>
-
-                <option value="Emotional">
-                    Emotional
-                </option>
-
-            </select>
-        </div>
-
-
-        <div class="section">
-            <label for="art_style">
-                🎨 Art Style
-            </label>
-
-            <select id="art_style" name="art_style">
-
-                <option value="Digital Comic Art">
-                    Digital Comic Art
-                </option>
-
-                <option value="Anime">
-                    Anime
-                </option>
-
-                <option value="Cartoon">
-                    Cartoon
-                </option>
-
-                <option value="Manga">
-                    Manga
-                </option>
-
-                <option value="Watercolor">
-                    Watercolor
-                </option>
-
-            </select>
-        </div>
-
+        <!-- BUTTON -->
 
         <div class="button-container">
-            <button type="submit" id="generateButton">
-    ✨ Generate My Comic
-</button>
 
-<p
-    id="loadingMessage"
-    style="display: none; text-align: center; margin-top: 20px; color: #666;"
->
-    ⏳ Creating your comic... This may take a few moments.
-</p>
+            <button
+                type="submit"
+                id="generateButton"
+            >
+                ✨ Generate My Comic
+            </button>
+
+            <p
+                id="loadingMessage"
+                style="display:none;"
+            >
+                ⏳ Creating your comic... Please wait.
+            </p>
+
         </div>
 
     </form>
 
+
+    <!-- FOOTER -->
+
     <div class="footer">
-        Powered by Gemini & Generative AI
+
+        Powered by
+        <strong>Gemini</strong>
+        & Generative AI
+
     </div>
 
 </div>
-<script>
-    function showLoading() {
-        document.getElementById("loadingMessage").style.display = "block";
 
-        const button = document.getElementById("generateButton");
-        button.disabled = true;
-        button.innerText = "⏳ Creating Comic...";
-    }
+
+<script>
+
+function showLoading() {
+
+    document.getElementById("loadingMessage").style.display = "block";
+
+    const button =
+        document.getElementById("generateButton");
+
+    button.disabled = true;
+
+    button.innerText =
+        "⏳ Creating Your Comic...";
+
+}
+
 </script>
+
 </body>
 </html>

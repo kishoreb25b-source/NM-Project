@@ -2,128 +2,620 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Comic Preview - ComicCraft</title>
 
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 40px;
-            background: #f5f5f5;
+
+        * {
+            box-sizing: border-box;
         }
+
+
+        body {
+
+            margin: 0;
+
+            padding: 40px 20px;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #eadcff,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at bottom right,
+                    #dff1ff,
+                    transparent 35%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #f8f5ff,
+                    #eef7ff
+                );
+
+            color: #29253b;
+
+        }
+
 
         .container {
-            max-width: 900px;
+
+            max-width: 1000px;
+
             margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.97
+            );
+
+            padding: 42px;
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(91, 72, 150, 0.15);
+
         }
+
+
+        /* HEADER */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .logo {
+
+            width: 65px;
+
+            height: 65px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #ec4899
+                );
+
+            font-size: 32px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(139, 92, 246, 0.25);
+
+        }
+
 
         h1 {
-            text-align: center;
+
+            font-size: 38px;
+
+            margin: 15px 0 8px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #db2777
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color:
+                transparent;
+
         }
+
+
+        .subtitle {
+
+            color: #858094;
+
+            font-size: 15px;
+
+        }
+
+
+        /* SECTION */
 
         .section {
+
             margin-top: 25px;
+
         }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 12px;
+
+            font-size: 20px;
+
+        }
+
 
         .content {
-            background: #f0f0f0;
+
+            background: #faf9ff;
+
+            border: 1px solid #ebe7f5;
+
             padding: 20px;
-            border-radius: 10px;
+
+            border-radius: 16px;
+
+            line-height: 1.7;
+
             white-space: pre-wrap;
+
+            color: #4c485b;
+
         }
+
+
+        /* DETAILS */
+
+        .details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .detail-card {
+
+            background: #faf9ff;
+
+            border: 1px solid #ebe7f5;
+
+            padding: 18px;
+
+            border-radius: 15px;
+
+        }
+
+
+        .detail-card span {
+
+            display: block;
+
+            font-size: 12px;
+
+            color: #918ba3;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .detail-card strong {
+
+            color: #3b3650;
+
+        }
+
+
+        /* AI CONTENT */
 
         .outline {
-            background: #fff7e6;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff8e8,
+                    #fffaf3
+                );
+
+            border-left:
+                5px solid #f59e0b;
+
         }
+
 
         .narration {
-            background: #eaf7ff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef8ff,
+                    #f5fbff
+                );
+
+            border-left:
+                5px solid #3b82f6;
+
         }
 
-        a {
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
+
+        /* GENERATED COMIC */
+
+        .comic-box {
+
+            background: #f7f5fc;
+
+            padding: 20px;
+
+            border-radius: 18px;
+
+            border: 1px solid #e7e2f1;
+
+            text-align: center;
+
         }
+
+
+        .comic-box img {
+
+            max-width: 100%;
+
+            height: auto;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.15);
+
+        }
+
+
+        /* BUTTONS */
+
+        .actions {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+        }
+
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            margin: 6px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+
+        }
+
+
+        .download {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #db2777
+                );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(124, 58, 237, 0.25);
+
+        }
+
+
+        .back {
+
+            background: #f1eef8;
+
+            color: #5c566d;
+
+        }
+
+
+        .btn:hover {
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eeeaf5;
+
+            color: #9993a7;
+
+            font-size: 13px;
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 28px 18px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
     </style>
 
 </head>
 
+
 <body>
 
-    <div class="container">
 
-        <h1>📖 Comic Preview</h1>
+<div class="container">
 
-        <div class="section">
-            <h2>📝 Your Story</h2>
 
-            <div class="content">
-                {{ story }}
-            </div>
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="logo">
+            📖
         </div>
-        <div class="section">
-    <h2>🎬 Comic Details</h2>
 
-    <div class="content">
-        <strong>👤 Main Character:</strong> {{ character }}<br><br>
+        <h1>
+            Your Comic is Ready!
+        </h1>
 
-        <strong>📍 Setting:</strong> {{ setting }}<br><br>
+        <div class="subtitle">
+            Generated with Gemini & Generative AI
+        </div>
 
-        <strong>🎭 Story Tone:</strong> {{ tone }}<br><br>
-
-        <strong>🎨 Art Style:</strong> {{ art_style }}
     </div>
-</div>
 
 
-        <div class="section">
-            <h2>🤖 AI Comic Outline</h2>
+    <!-- STORY -->
 
-            <div class="content outline">
-                {{ outline.outline }}
-            </div>
+    <div class="section">
+
+        <h2 class="section-title">
+            📝 Your Story
+        </h2>
+
+        <div class="content">
+            {{ story }}
         </div>
 
-        <div class="section">
-            <h2>💬 AI Narration & Dialogue</h2>
+    </div>
 
-            <div class="content narration">
-                {{ narration.narration }}
+
+    <!-- DETAILS -->
+
+    <div class="section">
+
+        <h2 class="section-title">
+            🎬 Comic Details
+        </h2>
+
+
+        <div class="details">
+
+            <div class="detail-card">
+
+                <span>
+                    👤 Main Character
+                </span>
+
+                <strong>
+                    {{ character }}
+                </strong>
+
             </div>
+
+
+            <div class="detail-card">
+
+                <span>
+                    📍 Setting
+                </span>
+
+                <strong>
+                    {{ setting }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <span>
+                    🎭 Story Tone
+                </span>
+
+                <strong>
+                    {{ tone }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-card">
+
+                <span>
+                    🎨 Art Style
+                </span>
+
+                <strong>
+                    {{ art_style }}
+                </strong>
+
+            </div>
+
         </div>
-        {% if comic_layout %}
-<div class="section">
-    <h2>🎨 Generated Comic</h2>
 
-    <div style="text-align: center;">
-    <img
-        src="/{{ comic_layout }}"
-        alt="Generated Comic"
-        style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);"
-    >
-</div>
-</div>
-{% endif %}
-{% if pdf_path %}
-<a href="/{{ pdf_path }}" download>
-    📥 Download Comic as PDF
-</a>
-{% endif %}
+    </div>
 
-<br><br>
 
-        <a href="/">
+    <!-- AI OUTLINE -->
+
+    <div class="section">
+
+        <h2 class="section-title">
+            🤖 AI Comic Outline
+        </h2>
+
+        <div class="content outline">
+            {{ outline.outline }}
+        </div>
+
+    </div>
+
+
+    <!-- NARRATION -->
+
+    <div class="section">
+
+        <h2 class="section-title">
+            💬 AI Narration & Dialogue
+        </h2>
+
+        <div class="content narration">
+            {{ narration.narration }}
+        </div>
+
+    </div>
+
+
+    <!-- GENERATED COMIC -->
+
+    {% if comic_layout %}
+
+    <div class="section">
+
+        <h2 class="section-title">
+            🎨 Generated Comic
+        </h2>
+
+
+        <div class="comic-box">
+
+            <img
+                src="/{{ comic_layout }}"
+                alt="Generated Comic"
+            >
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="actions">
+
+        {% if pdf_path %}
+
+        <a
+            href="/{{ pdf_path }}"
+            download
+            class="btn download"
+        >
+            📥 Download Comic PDF
+        </a>
+
+        {% endif %}
+
+
+        <a
+            href="/"
+            class="btn back"
+        >
             ← Create Another Comic
         </a>
 
     </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        ✨ ComicCraft
+        <br>
+
+        Turning ideas into stories with
+        <strong>AI</strong>
+
+    </div>
+
+
+</div>
+
 
 </body>
 
